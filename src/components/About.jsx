@@ -34,8 +34,9 @@ const About = () => {
         },
         aboutImage: {
             position: 'relative',
-            width: '350px',
-            height: '350px'
+            width: '100%',
+            maxWidth: '350px',
+            aspectRatio: '1/1'
         },
         imagePlaceholder: {
             width: '100%',
@@ -52,28 +53,28 @@ const About = () => {
         profileImage: {
             width: '100%',
             height: '100%',
-            objectFit: 'contain',
-            objectPosition: 'top center',
+            objectFit: 'cover',
+            objectPosition: 'center',
             background: 'rgba(255, 255, 255, 0.05)'
         },
         imageBorder: {
             position: 'absolute',
-            top: '-10px',
-            left: '-10px',
-            right: '-10px',
-            bottom: '-10px',
+            top: '-8px',
+            left: '-8px',
+            right: '-8px',
+            bottom: '-8px',
             borderRadius: '50%',
             border: '3px solid #667eea',
             animation: 'rotate 10s linear infinite',
             zIndex: 1
         },
         aboutContent: {
-            padding: '0 1rem'
+            padding: '0'
         },
         aboutGreeting: {
-            fontSize: '2rem',
+            fontSize: '2.5rem',
             fontWeight: 700,
-            marginBottom: '1.5rem',
+            marginBottom: '1rem',
             color: '#ffffff'
         },
         gradientText: {
@@ -90,16 +91,17 @@ const About = () => {
         },
         highlightsGrid: {
             display: 'grid',
+            gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
             gap: '1.5rem',
-            margin: '2.5rem 0'
+            margin: '2rem 0'
         },
         highlightItem: {
             display: 'flex',
             gap: '1rem',
             padding: '1.5rem',
             background: 'rgba(102, 126, 234, 0.05)',
-            borderLeft: '3px solid #667eea',
-            borderRadius: '8px',
+            borderLeft: '4px solid #667eea',
+            borderRadius: '12px',
             transition: 'all 0.3s ease'
         },
         highlightIcon: {
@@ -129,68 +131,52 @@ const About = () => {
     return (
         <section id="about" style={styles.aboutSection}>
             <div className="container">
-                <h2 className="section-title text-center" style={{ width: '100%', marginBottom: '3rem' }}>About Me</h2>
+                <h2 className="section-title text-center" style={{ marginBottom: '4rem' }}>About Me</h2>
 
                 <div className="row align-items-center g-5">
-                    <div className="col-lg-5">
-                        <div className="about-image-container fade-in-up" style={styles.aboutImageContainer}>
-                            <div style={styles.aboutImage}>
+                    <div className="col-lg-5 order-2 order-lg-1">
+                        <div className="about-image-wrapper fade-in-up" style={{ display: 'flex', justifyContent: 'center' }}>
+                            <div className="about-image-container" style={styles.aboutImage}>
                                 <div style={styles.imagePlaceholder}>
                                     <img src={profileImg} alt="Mahesh Parmar" style={styles.profileImage} />
                                 </div>
-                                <div style={styles.imageBorder}>
-                                    <div style={{
-                                        content: '',
-                                        position: 'absolute',
-                                        top: '20px',
-                                        left: '20px',
-                                        right: '20px',
-                                        bottom: '20px',
-                                        borderRadius: '50%',
-                                        border: '2px dashed rgba(102, 126, 234, 0.3)',
-                                        animation: 'rotate 15s linear infinite reverse'
-                                    }}></div>
-                                </div>
+                                <div style={styles.imageBorder}></div>
                             </div>
                         </div>
                     </div>
 
-                    <div className="col-lg-7">
-                        <div className="about-content fade-in-up" style={styles.aboutContent}>
-                            <h3 style={styles.aboutGreeting}>
+                    <div className="col-lg-7 order-1 order-lg-2">
+                        <div className="about-content-wrapper fade-in-up" style={styles.aboutContent}>
+                            <h3 className="about-greeting" style={styles.aboutGreeting}>
                                 Hello! I'm <span style={styles.gradientText}>Mahesh</span>
                             </h3>
 
-                            <p style={styles.aboutText}>
-                                I'm a passionate <strong style={{ color: '#ffffff', fontWeight: 600 }}>Full Stack Web Developer</strong> with a strong background in
-                                Information Technology. I specialize in building modern, scalable web applications
-                                that deliver exceptional user experiences.
-                            </p>
+                            <div className="about-text-content">
+                                <p style={styles.aboutText}>
+                                    I'm a passionate <strong style={{ color: '#ffffff', fontWeight: 600 }}>Full Stack Web Developer</strong> with a strong background in
+                                    Information Technology. I specialize in building modern, scalable web applications
+                                    that deliver exceptional user experiences.
+                                </p>
 
-                            <p style={styles.aboutText}>
-                                With expertise in both frontend and backend technologies, I create end-to-end solutions
-                                using <strong style={{ color: '#ffffff', fontWeight: 600 }}>React, Django, Python, and JavaScript</strong>. My focus is on writing
-                                clean, efficient code and implementing best practices to ensure high-quality deliverables.
-                            </p>
+                                <p style={styles.aboutText}>
+                                    With expertise in both frontend and backend technologies, I create end-to-end solutions
+                                    using <strong style={{ color: '#ffffff', fontWeight: 600 }}>React, Django, Python, and JavaScript</strong>.
+                                </p>
+                            </div>
 
-                            <p style={styles.aboutText}>
-                                I'm driven by the challenge of solving complex problems and turning ideas into reality.
-                                Whether it's crafting intuitive user interfaces or architecting robust backend systems,
-                                I bring dedication and innovation to every project.
-                            </p>
-
-                            <div style={styles.highlightsGrid}>
+                            <div className="highlights-grid" style={styles.highlightsGrid}>
                                 {highlights.map((item, index) => (
                                     <div
                                         key={index}
+                                        className="highlight-item"
                                         style={styles.highlightItem}
                                         onMouseEnter={(e) => {
                                             e.currentTarget.style.background = 'rgba(102, 126, 234, 0.1)';
-                                            e.currentTarget.style.transform = 'translateX(10px)';
+                                            e.currentTarget.style.transform = 'translateY(-5px)';
                                         }}
                                         onMouseLeave={(e) => {
                                             e.currentTarget.style.background = 'rgba(102, 126, 234, 0.05)';
-                                            e.currentTarget.style.transform = 'translateX(0)';
+                                            e.currentTarget.style.transform = 'translateY(0)';
                                         }}
                                     >
                                         <div style={styles.highlightIcon}>{item.icon}</div>
@@ -202,10 +188,10 @@ const About = () => {
                                 ))}
                             </div>
 
-                            <div style={styles.aboutActions}>
+                            <div className="about-actions" style={styles.aboutActions}>
                                 <a
                                     href={resumePdf}
-                                    className="btn btn-primary btn-lg"
+                                    className="btn btn-primary btn-lg px-4"
                                     download="Mahesh_Parmar.pdf"
                                 >
                                     <FaDownload className="me-2" />
@@ -218,48 +204,38 @@ const About = () => {
             </div>
 
             <style>{`
-        @keyframes rotate {
-          from {
-            transform: rotate(0deg);
-          }
-          to {
-            transform: rotate(360deg);
-          }
-        }
-        @media (max-width: 992px) {
-          .about-image {
-            width: 300px !important;
-            height: 300px !important;
-            margin-bottom: 2rem;
-          }
-        }
-        @media (max-width: 768px) {
-          .about-image {
-            width: 250px !important;
-            height: 250px !important;
-          }
-          .about-greeting {
-            font-size: 1.75rem !important;
-            text-align: center;
-          }
-          .about-text {
-            font-size: 1rem !important;
-            text-align: center;
-          }
-          .highlight-item {
-            flex-direction: column !important;
-            text-align: center;
-            align-items: center !important;
-          }
-          .about-actions {
-            text-align: center;
-          }
-          .about-actions .btn {
-            width: 100%;
-            max-width: 300px;
-          }
-        }
-      `}</style>
+                @keyframes rotate {
+                    from { transform: rotate(0deg); }
+                    to { transform: rotate(360deg); }
+                }
+
+                @media (max-width: 991px) {
+                    .about-greeting {
+                        font-size: 2rem !important;
+                        text-align: center;
+                    }
+                    .about-text-content {
+                        text-align: center;
+                    }
+                    .about-actions {
+                        display: flex;
+                        justify-content: center;
+                    }
+                    .about-image-container {
+                        max-width: 280px !important;
+                        margin-top: 2rem;
+                    }
+                }
+
+                @media (max-width: 576px) {
+                    .highlight-item {
+                        padding: 1.2rem !important;
+                    }
+                    .about-actions .btn {
+                        width: 100%;
+                    }
+                }
+            `}</style>
         </section>
     );
 };

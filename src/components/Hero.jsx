@@ -50,10 +50,10 @@ const Hero = () => {
             animation: 'fadeIn 1s ease-out'
         },
         heroTitle: {
-            fontSize: '4rem',
+            fontSize: '3.5rem',
             fontWeight: 800,
-            marginBottom: '1.5rem',
-            lineHeight: 1.2,
+            marginBottom: '1rem',
+            lineHeight: 1.1,
             animation: 'fadeInUp 1s ease-out 0.2s both'
         },
         gradientText: {
@@ -63,7 +63,7 @@ const Hero = () => {
             backgroundClip: 'text'
         },
         heroSubtitle: {
-            fontSize: '1.5rem',
+            fontSize: '1.25rem',
             color: '#b0b0b0',
             marginBottom: '2rem',
             animation: 'fadeInUp 1s ease-out 0.4s both'
@@ -72,18 +72,18 @@ const Hero = () => {
             display: 'flex',
             flexWrap: 'wrap',
             justifyContent: 'center',
-            gap: '1rem',
-            marginBottom: '3rem'
+            gap: '0.8rem',
+            marginBottom: '2.5rem'
         },
         techBadge: {
             display: 'inline-block',
-            padding: '0.5rem 1.5rem',
+            padding: '0.4rem 1.2rem',
             background: 'rgba(102, 126, 234, 0.1)',
             border: '1px solid rgba(102, 126, 234, 0.3)',
             borderRadius: '50px',
             color: '#ffffff',
             fontWeight: 500,
-            fontSize: '0.95rem',
+            fontSize: '0.9rem',
             transition: 'all 0.3s ease',
             animation: 'fadeInUp 1s ease-out both'
         },
@@ -107,26 +107,27 @@ const Hero = () => {
                     flexDirection: 'column',
                     alignItems: 'center',
                     justifyContent: 'center',
-                    height: '100vh',
+                    minHeight: '100vh',
                     width: '100%',
-                    maxWidth: '900px',
+                    maxWidth: '1200px',
                     margin: '0 auto',
-                    padding: '0 1.5rem',
+                    padding: '2rem 1.5rem',
                     textAlign: 'center'
                 }}
             >
-                <div className="hero-text" style={styles.heroText}>
+                <div className="hero-container" style={{ width: '100%', maxWidth: '800px' }}>
                     <p style={styles.heroGreeting}>Hello, I'm</p>
-                    <h1 style={styles.heroTitle}>
+                    <h1 className="hero-title" style={styles.heroTitle}>
                         <span style={styles.gradientText}>Full Stack Web Developer</span>
                     </h1>
-                    <p style={styles.heroSubtitle}>
+                    <p className="hero-subtitle" style={styles.heroSubtitle}>
                         Crafting scalable web applications with
                     </p>
                     <div style={styles.techStackContainer}>
                         {techStack.map((tech, index) => (
                             <span
                                 key={index}
+                                className="tech-badge"
                                 style={{
                                     ...styles.techBadge,
                                     animationDelay: `${index * 0.1}s`
@@ -136,28 +137,65 @@ const Hero = () => {
                             </span>
                         ))}
                     </div>
-                    <div style={styles.heroButtons}>
+                    <div className="hero-btns" style={styles.heroButtons}>
                         <Link
                             to="projects"
                             smooth={true}
-                            offset={-70}
+                            offset={0}
                             duration={500}
-                            className="btn btn-primary btn-lg"
+                            className="btn btn-primary btn-lg px-4 py-2"
                         >
                             View Projects
                         </Link>
                         <Link
                             to="contact"
                             smooth={true}
-                            offset={-70}
+                            offset={0}
                             duration={500}
-                            className="btn btn-outline-primary btn-lg"
+                            className="btn btn-outline-primary btn-lg px-4 py-2"
                         >
                             Contact Me
                         </Link>
                     </div>
                 </div>
             </div>
+
+            <style>{`
+                @keyframes fadeInUp {
+                    from { transform: translateY(20px); opacity: 0; }
+                    to { transform: translateY(0); opacity: 1; }
+                }
+                @keyframes fadeIn {
+                    from { opacity: 0; }
+                    to { opacity: 1; }
+                }
+
+                @media (max-width: 768px) {
+                    .hero-title {
+                        font-size: 2.2rem !important;
+                        margin-bottom: 0.8rem !important;
+                    }
+                    .hero-subtitle {
+                        font-size: 1rem !important;
+                        margin-bottom: 1.5rem !important;
+                    }
+                    .tech-badge {
+                        padding: 0.3rem 1rem !important;
+                        font-size: 0.8rem !important;
+                    }
+                    .hero-btns .btn {
+                        width: 100%;
+                        max-width: 280px;
+                        font-size: 1rem !important;
+                    }
+                }
+
+                @media (max-width: 480px) {
+                    .hero-title {
+                        font-size: 1.8rem !important;
+                    }
+                }
+            `}</style>
         </section>
     );
 };

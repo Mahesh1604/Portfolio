@@ -185,13 +185,13 @@ const Footer = () => {
                     <h2 className="section-title text-center" style={{ width: '100%', marginBottom: '3rem' }}>Get In Touch</h2>
 
                     <div className="row justify-content-center">
-                        <div className="col-lg-8">
+                        <div className="col-lg-10">
                             <p className="contact-intro text-center" style={styles.contactIntro}>
                                 I'm always open to discussing new projects, creative ideas, or opportunities to be part of your visions.
                                 Feel free to reach out!
                             </p>
 
-                            <div style={styles.contactInfoGrid}>
+                            <div className="contact-info-grid" style={styles.contactInfoGrid}>
                                 {contactInfo.map((info, index) => (
                                     <div
                                         key={index}
@@ -217,9 +217,8 @@ const Footer = () => {
                                             {info.link ? (
                                                 <a
                                                     href={info.link}
+                                                    className="contact-value-link"
                                                     style={styles.contactValue}
-                                                    onMouseEnter={(e) => e.currentTarget.style.color = '#667eea'}
-                                                    onMouseLeave={(e) => e.currentTarget.style.color = '#b0b0b0'}
                                                 >
                                                     {info.value}
                                                 </a>
@@ -238,13 +237,13 @@ const Footer = () => {
             {/* Footer */}
             <footer style={styles.footer}>
                 <div className="container">
-                    <div style={styles.footerContent}>
-                        <div style={styles.footerBrand}>
+                    <div className="footer-content" style={styles.footerContent}>
+                        <div className="footer-brand" style={styles.footerBrand}>
                             <h3 style={styles.footerBrandTitle}>Mahesh Parmar</h3>
                             <p style={styles.footerBrandText}>Full Stack Web Developer</p>
                         </div>
 
-                        <div style={styles.footerSocial}>
+                        <div className="footer-social" style={styles.footerSocial}>
                             <h4 style={styles.footerSocialTitle}>Connect With Me</h4>
                             <div style={styles.socialLinks}>
                                 {socialLinks.map((social, index) => (
@@ -277,8 +276,8 @@ const Footer = () => {
                         </div>
                     </div>
 
-                    <div style={styles.footerBottom}>
-                        <p style={styles.footerBottomText}>
+                    <div className="footer-bottom" style={styles.footerBottom}>
+                        <p className="footer-bottom-text" style={styles.footerBottomText}>
                             &copy; {currentYear} Mahesh. Made with <FaHeart style={styles.heartIcon} /> using React & Bootstrap
                         </p>
                     </div>
@@ -286,37 +285,41 @@ const Footer = () => {
             </footer>
 
             <style>{`
-        @keyframes heartbeat {
-          0%, 100% {
-            transform: scale(1);
-          }
-          10%, 30% {
-            transform: scale(1.2);
-          }
-          20%, 40% {
-            transform: scale(1);
-          }
-        }
-        @media (max-width: 768px) {
-          .contact-info-grid {
-            grid-template-columns: 1fr !important;
-            gap: 1.5rem !important;
-          }
-          .contact-info-item {
-            flex-direction: column !important;
-            align-items: center !important;
-            text-align: center;
-          }
-          .footer-content {
-            grid-template-columns: 1fr !important;
-            gap: 2rem !important;
-          }
-          .footer-bottom p {
-            flex-direction: column !important;
-            gap: 0.25rem !important;
-          }
-        }
-      `}</style>
+                @keyframes heartbeat {
+                    0%, 100% { transform: scale(1); }
+                    10%, 30% { transform: scale(1.2); }
+                    20%, 40% { transform: scale(1); }
+                }
+
+                @media (max-width: 768px) {
+                    .contact-intro {
+                        font-size: 1rem !important;
+                        margin-bottom: 2rem !important;
+                    }
+                    .contact-info-grid {
+                        grid-template-columns: 1fr !important;
+                        gap: 1.5rem !important;
+                    }
+                    .contact-info-item {
+                        flex-direction: column !important;
+                        align-items: center !important;
+                        text-align: center;
+                        padding: 1.5rem !important;
+                    }
+                    .footer-content {
+                        grid-template-columns: 1fr !important;
+                        gap: 2rem !important;
+                    }
+                    .footer-bottom-text {
+                        flex-direction: row !important;
+                        flex-wrap: wrap;
+                        font-size: 0.85rem !important;
+                    }
+                    .contact-value-link {
+                        color: #667eea !important;
+                    }
+                }
+            `}</style>
         </>
     );
 };

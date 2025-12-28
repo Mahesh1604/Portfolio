@@ -23,10 +23,28 @@ function App() {
           color: #ffffff;
           overflow-x: hidden;
           line-height: 1.6;
+          width: 100%;
         }
 
         html {
           scroll-behavior: smooth;
+        }
+
+        .section-title {
+          font-size: 2.5rem;
+          font-weight: 800;
+          margin-bottom: 3rem;
+          background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+          text-align: center;
+        }
+
+        @media (max-width: 768px) {
+          .section-title {
+            font-size: 1.8rem;
+            margin-bottom: 2rem;
+          }
         }
 
         /* Hide scrollbar for Chrome, Safari and Opera */
@@ -38,6 +56,21 @@ function App() {
         body {
           -ms-overflow-style: none;  /* IE and Edge */
           scrollbar-width: none;  /* Firefox */
+        }
+
+        .fade-in-up {
+          animation: fadeInUp 0.8s ease-out both;
+        }
+
+        @keyframes fadeInUp {
+          from {
+            opacity: 0;
+            transform: translateY(30px);
+          }
+          to {
+            opacity: 1;
+            transform: translateY(0);
+          }
         }
       `}</style>
 
