@@ -1,4 +1,8 @@
 import { FaGithub, FaExternalLinkAlt } from 'react-icons/fa';
+import authImg from '../assets/images/authentication.jpeg';
+import foodImg from '../assets/images/foodexpress.jpeg';
+import foundationImg from '../assets/images/aaradhyadharma oundation.jpeg';
+import studioImg from '../assets/images/photo studio.jpeg';
 
 const Projects = () => {
     const projects = [
@@ -7,7 +11,7 @@ const Projects = () => {
             title: 'User Authentication System',
             description: 'Secure authentication system featuring email verification, login, and signup functionality.',
             tech: ['React', 'Django', 'PostgreSQL', 'SMTP'],
-            image: 'project1',
+            image: authImg,
             liveUrl: 'https://github.com/Mahesh1604/authentication',
             githubUrl: 'https://github.com/Mahesh1604/authentication',
             gradient: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)'
@@ -17,7 +21,7 @@ const Projects = () => {
             title: 'FoodExpress',
             description: 'A React-based food ordering platform where users can browse menus and place orders easily.',
             tech: ['React', 'JavaScript', 'CSS', 'Vite'],
-            image: 'project2',
+            image: foodImg,
             liveUrl: 'https://github.com/Mahesh1604/FoodExpress',
             githubUrl: 'https://github.com/Mahesh1604/FoodExpress',
             gradient: 'linear-gradient(135deg, #f093fb 0%, #f5576c 100%)'
@@ -27,7 +31,7 @@ const Projects = () => {
             title: 'Aaradhhyadharma Foundation',
             description: 'A modern website for a non-profit organization built with React, showcasing their mission and social activities.',
             tech: ['React', 'JavaScript', 'CSS', 'Bootstrap'],
-            image: 'project3',
+            image: foundationImg,
             liveUrl: 'https://github.com/Mahesh1604/AaradhhyadharmaFoundation',
             githubUrl: 'https://github.com/Mahesh1604/AaradhhyadharmaFoundation',
             gradient: 'linear-gradient(135deg, #4facfe 0%, #00f2fe 100%)'
@@ -37,7 +41,7 @@ const Projects = () => {
             title: 'Photo Studio Website',
             description: 'A Django-based photography studio website featuring a portfolio gallery, service listings, online booking, and an admin panel for content management.',
             tech: ['Python', 'Django', 'SQLite', 'CSS'],
-            image: 'project4',
+            image: studioImg,
             liveUrl: 'https://github.com/Mahesh1604/photostudiowebsite',
             githubUrl: 'https://github.com/Mahesh1604/photostudiowebsite',
             gradient: 'linear-gradient(135deg, #43e97b 0%, #38f9d7 100%)'
@@ -166,8 +170,10 @@ const Projects = () => {
                                     e.currentTarget.style.boxShadow = '0 10px 30px rgba(102, 126, 234, 0.2)';
                                     const overlay = e.currentTarget.querySelector('.project-overlay');
                                     const links = e.currentTarget.querySelector('.project-links');
+                                    const img = e.currentTarget.querySelector('.main-project-img');
                                     if (overlay) overlay.style.opacity = '1';
                                     if (links) links.style.transform = 'translateY(0)';
+                                    if (img) img.style.transform = 'scale(1.1)';
                                 }}
                                 onMouseLeave={(e) => {
                                     e.currentTarget.style.transform = 'translateY(0)';
@@ -175,8 +181,10 @@ const Projects = () => {
                                     e.currentTarget.style.boxShadow = 'none';
                                     const overlay = e.currentTarget.querySelector('.project-overlay');
                                     const links = e.currentTarget.querySelector('.project-links');
+                                    const img = e.currentTarget.querySelector('.main-project-img');
                                     if (overlay) overlay.style.opacity = '0';
                                     if (links) links.style.transform = 'translateY(20px)';
+                                    if (img) img.style.transform = 'scale(1)';
                                 }}
                             >
                                 <div style={styles.projectImageContainer}>
@@ -187,6 +195,17 @@ const Projects = () => {
                                             background: project.gradient
                                         }}
                                     >
+                                        <img
+                                            src={project.image}
+                                            alt={project.title}
+                                            style={{
+                                                width: '100%',
+                                                height: '100%',
+                                                objectFit: 'cover',
+                                                transition: 'transform 0.4s ease'
+                                            }}
+                                            className="main-project-img"
+                                        />
                                         <div className="project-overlay" style={styles.projectOverlay}>
                                             <div className="project-links" style={styles.projectLinks}>
                                                 <a
@@ -206,9 +225,6 @@ const Projects = () => {
                                                     <FaGithub />
                                                 </a>
                                             </div>
-                                        </div>
-                                        <div style={{ fontSize: '1.5rem', fontWeight: 800, color: 'rgba(255,255,255,0.3)' }}>
-                                            {project.title}
                                         </div>
                                     </div>
                                 </div>

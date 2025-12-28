@@ -54,7 +54,7 @@ const About = () => {
             width: '100%',
             height: '100%',
             objectFit: 'cover',
-            objectPosition: 'center',
+            objectPosition: 'top center',
             background: 'rgba(255, 255, 255, 0.05)'
         },
         imageBorder: {
@@ -193,6 +193,8 @@ const About = () => {
                                     href={resumePdf}
                                     className="btn btn-primary btn-lg px-4"
                                     download="Mahesh_Parmar.pdf"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
                                 >
                                     <FaDownload className="me-2" />
                                     Download Resume
