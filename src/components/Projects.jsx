@@ -28,7 +28,7 @@ const Projects = () => {
         },
         {
             id: 3,
-            title: 'Aaradhhyadharma Foundation',
+            title: 'Aaradhyadharma Foundation',
             description: 'A modern website for a non-profit organization built with React, showcasing their mission and social activities.',
             tech: ['React', 'JavaScript', 'CSS', 'Bootstrap'],
             image: foundationImg,
